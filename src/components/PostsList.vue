@@ -1,7 +1,7 @@
 <template>
   <ol :start="start">
     <li v-for="post in posts" class="list-item">
-      <a :href="post.url" target="_blank" class="post-title">
+      <a :href="post.url" target="_blank" rel="noopener" class="post-title">
         {{post.title}}
       </a><!-- .post-title -->
       <span class="txt-grey" v-if="post.domain">

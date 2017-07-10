@@ -3,7 +3,7 @@
     <div class="loader loader-margin" v-if="!post"></div> <!-- .loader -->
     <div v-else>
       <p>
-        <a :href="post.url" target="_blank" class="title">
+        <a :href="post.url" target="_blank" rel="noopener" class="title">
           {{post.title}}
         </a>
         <small v-if="post.domain">({{post.domain}})</small>
