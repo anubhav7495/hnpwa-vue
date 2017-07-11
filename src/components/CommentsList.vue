@@ -3,7 +3,14 @@
     <div class="loader loader-margin" v-if="!post"></div> <!-- .loader -->
     <div v-else>
       <p>
-        <a :href="post.url" target="_blank" rel="noopener" class="title">
+        <router-link
+          :to="{ name: 'commentsList', params: { id: post.id } }"
+          class="post-title"
+          v-if="isShortUrl(post.url)"
+        >
+          {{post.title}}
+        </router-link>
+        <a v-else :href="post.url" target="_blank" rel="noopener" class="title">
           {{post.title}}
         </a>
         <small v-if="post.domain">({{post.domain}})</small>
@@ -22,7 +29,7 @@
 </template>
 
 <script>
-import pluralize from '../utils';
+import { pluralize, isShortUrl } from '../utils';
 import Comment from './Comment';
 
 export default {
@@ -41,6 +48,7 @@ export default {
   },
   methods: {
     pluralize,
+    isShortUrl,
     fetchPost() {
       fetch(`https://node-hnapi.herokuapp.com/item/${this.id}`)
       .then((res) => {

@@ -1,7 +1,14 @@
 <template>
   <ol :start="start">
     <li v-for="post in posts" class="list-item">
-      <a :href="post.url" target="_blank" rel="noopener" class="post-title">
+      <router-link
+        :to="{ name: 'commentsList', params: { id: post.id } }"
+        class="post-title"
+        v-if="isShortUrl(post.url)"
+      >
+        {{post.title}}
+      </router-link>
+      <a v-else :href="post.url" target="_blank" rel="noopener" class="post-title">
         {{post.title}}
       </a><!-- .post-title -->
       <span class="txt-grey" v-if="post.domain">
@@ -25,7 +32,7 @@
 </template>
 
 <script>
-import pluralize from '../utils';
+import { pluralize, isShortUrl } from '../utils';
 
 export default {
   name: 'posts-list',
@@ -41,6 +48,7 @@ export default {
   },
   methods: {
     pluralize,
+    isShortUrl,
   },
 };
 </script>
