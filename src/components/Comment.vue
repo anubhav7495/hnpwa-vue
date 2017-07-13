@@ -45,6 +45,11 @@ export default {
 <style>
   .content {
     border-bottom: 1px solid #eee;
+    overflow-wrap: break-word;
+  }
+
+  .content pre {
+    white-space: pre-wrap;
   }
 
   .child-padding {
