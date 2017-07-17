@@ -10,6 +10,12 @@ A hacker news reader pwa (Progressive Web App) built using Vue.js and Vue-router
 
 ### Features
 
+* Performance Scores
+  * LightHouse: 91/100 [LightHouse Link](https://www.webpagetest.org/lighthouse.php?test=170717_C8_230384878d6c07f66bb59cf11f15ad24&run=3)
+  * Faster_3G: 3.4s [WebpPageTest Link](https://www.webpagetest.org/result/170717_C8_230384878d6c07f66bb59cf11f15ad24/)
+  * 3G_EM: 4.3s [WebpPageTest Link](https://www.webpagetest.org/result/170717_TC_8b6a7c9d33d6687172ff9104a78cbae3/)
+
+
 * Built using Vue.js & Vue-router
   * route-level code splitting
   * preload / prefetch resources
@@ -20,7 +26,6 @@ A hacker news reader pwa (Progressive Web App) built using Vue.js and Vue-router
   * app manifest
   * service worker using SWPrecachePlugin
   * app shell
-  * 100/100 lighthouse score
 
 
 * Single-file vue components
