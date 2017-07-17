@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>hnpwa-vue</title>
+    
+    <!-- DNS Prefetch for api endpoint -->
+    <link rel="dns-prefetch" href="https://node-hnapi.herokuapp.com/">
+
     <link rel="icon" type="image/png" sizes="32x32" href="static/img/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/img/icons/favicon-16x16.png">
     <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
     <!-- Add to home screen for Android and modern mobile browsers -->
     <link rel="manifest" href="static/manifest.json">
     <meta name="theme-color" content="#4DBA87">
-
-    <!-- Inline api data preload request script -->
-    <%= htmlWebpackPlugin.options.apiDataPreloadLoader %>
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,6 +34,8 @@
       oops! I think scripts are disabled or failed to download.
     </noscript>
     <div id="app"></div>
+    <!-- Inline api data preload request script -->
+    <%= htmlWebpackPlugin.options.apiDataPreloadLoader %>
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
