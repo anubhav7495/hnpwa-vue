@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>hnpwa-vue</title>
-    
+
     <!-- DNS Prefetch for api endpoint -->
     <link rel="dns-prefetch" href="https://node-hnapi.herokuapp.com/">
 
@@ -24,6 +24,10 @@
     <!-- Add to home screen for Windows -->
     <meta name="msapplication-TileImage" content="static/img/icons/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#fff">
+
+    <!-- Inline api data preload request script -->
+    <%= htmlWebpackPlugin.options.apiDataPreloadLoader %>
+    
     <% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
@@ -34,8 +38,6 @@
       oops! I think scripts are disabled or failed to download.
     </noscript>
     <div id="app"></div>
-    <!-- Inline api data preload request script -->
-    <%= htmlWebpackPlugin.options.apiDataPreloadLoader %>
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
