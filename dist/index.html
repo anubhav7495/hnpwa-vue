@@ -1,13 +1,14 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>hnpwa-vue</title><link rel=icon type=image/png sizes=32x32 href=static/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=static/img/icons/favicon-16x16.png><!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]--><link rel=manifest href=static/manifest.json><meta name=theme-color content=#4DBA87><link rel=dns-prefetch href=https://node-hnapi.herokuapp.com/ ><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=hnpwa-vue><link rel=apple-touch-icon href=static/img/icons/icon-152x152.png><meta name=msapplication-TileImage content=static/img/icons/icon-144x144.png><meta name=msapplication-TileColor content=#fff><link rel=prefetch href=static/js/0.2ad6b6446440c86b5168.js as=script><link rel=prefetch href=static/js/1.27ed90d7d3d9feae1dc2.js as=script><link rel=preload href=static/js/vendor.385f18f75a77af8868d3.js as=script><link rel=preload href=static/js/app.4ca063c2287745dd0d15.js as=script><link rel=preload href=static/css/app.580025ba0713bbb2da88d9a26af033d4.css as=style><link rel=preload href=static/js/manifest.9ec790168e6a1fac12af.js as=script><link href=static/css/app.580025ba0713bbb2da88d9a26af033d4.css rel=stylesheet></head><body><noscript>oops! I think scripts are disabled or failed to download.</noscript><div id=app></div><script>(function() {
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>hnpwa-vue</title><link rel=icon type=image/png sizes=32x32 href=static/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=static/img/icons/favicon-16x16.png><!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]--><link rel=manifest href=static/manifest.json><meta name=theme-color content=#4DBA87><script>const q = window.location.hash ? window.location.hash.slice(1) : '/news';
+fetch('https://node-hnapi.herokuapp.com' + q)
+  .then((res) => {
+    if(res.ok) return res.json();
+    throw new Error('api data preload failed');
+  })
+  .then((res) => {sessionStorage.setItem(q, JSON.stringify(res))})
+  .catch(e => console.error(e.message));</script><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=hnpwa-vue><link rel=apple-touch-icon href=static/img/icons/icon-152x152.png><meta name=msapplication-TileImage content=static/img/icons/icon-144x144.png><meta name=msapplication-TileColor content=#fff><link rel=prefetch href=static/js/0.bd2bb6bd959d8d8a7d81.js as=script><link rel=prefetch href=static/js/1.2c910ae43d63c881a16c.js as=script><link rel=preload href=static/js/vendor.385f18f75a77af8868d3.js as=script><link rel=preload href=static/js/app.2521bd30e041bfc8274a.js as=script><link rel=preload href=static/css/app.580025ba0713bbb2da88d9a26af033d4.css as=style><link rel=preload href=static/js/manifest.830ad255f4a5676deb62.js as=script><link href=static/css/app.580025ba0713bbb2da88d9a26af033d4.css rel=stylesheet></head><body><noscript>oops! I think scripts are disabled or failed to download.</noscript><div id=app></div><script>(function() {
   'use strict';
-
-  // Check to make sure service workers are supported in the current browser,
-  // and that the current page is accessed from a secure origin. Using a
-  // service worker from an insecure origin will trigger JS console errors.
   const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
-      // [::1] is the IPv6 localhost address.
       window.location.hostname === '[::1]' ||
-      // 127.0.0.1/8 is considered localhost for IPv4.
       window.location.hostname.match(
         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
       )
@@ -18,23 +19,13 @@
           (window.location.protocol === 'https:' || isLocalhost)) {
         navigator.serviceWorker.register('service-worker.js')
         .then(function(registration) {
-          // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
-            // updatefound is also fired the very first time the SW is installed,
-            // and there's no need to prompt for a reload at that point.
-            // So check here to see if the page is already controlled,
-            // i.e. whether there's an existing service worker.
             if (navigator.serviceWorker.controller) {
-              // The updatefound event implies that registration.installing is set
               const installingWorker = registration.installing;
 
               installingWorker.onstatechange = function() {
                 switch (installingWorker.state) {
                   case 'installed':
-                    // At this point, the old content will have been purged and the
-                    // fresh content will have been added to the cache.
-                    // It's the perfect time to display a "New content is
-                    // available; please refresh." message in the page's interface.
                     break;
 
                   case 'redundant':
@@ -42,7 +33,6 @@
                                     'service worker became redundant.');
 
                   default:
-                    // Ignore
                 }
               };
             }
@@ -52,4 +42,4 @@
         });
       }
   });
-})();</script><script type=text/javascript src=static/js/manifest.9ec790168e6a1fac12af.js></script><script type=text/javascript src=static/js/vendor.385f18f75a77af8868d3.js></script><script type=text/javascript src=static/js/app.4ca063c2287745dd0d15.js></script></body></html>
+})();</script><script type=text/javascript src=static/js/manifest.830ad255f4a5676deb62.js></script><script type=text/javascript src=static/js/vendor.385f18f75a77af8868d3.js></script><script type=text/javascript src=static/js/app.2521bd30e041bfc8274a.js></script></body></html>

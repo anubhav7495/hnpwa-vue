@@ -17,6 +17,7 @@
 
 <script>
 import PostsList from './PostsList';
+import { getSeedData } from '../utils';
 
 export default {
   name: 'home',
@@ -32,14 +33,18 @@ export default {
     };
   },
   computed: {
-    start: function start() {
+    start() {
       return ((this.page - 1) * 30) + 1;
     },
   },
-  created: function created() {
+  created() {
+    if (this.page === 1) {
+      this.posts = this.getSeedData(this.type);
+    }
     this.fetchData();
   },
   methods: {
+    getSeedData,
     fetchData() {
       fetch(`https://node-hnapi.herokuapp.com/${this.type}?page=${this.page}`)
       .then((res) => {

@@ -15,7 +15,7 @@ export default new Router({
     { path: '/show/:page?', name: 'show', component: Home },
     { path: '/ask/:page?', name: 'ask', component: Home },
     { path: '/jobs/:page?', name: 'jobs', component: Home },
-    { path: '/comments/:id', name: 'commentsList', component: CommentsList },
+    { path: '/item/:id', name: 'commentsList', component: CommentsList },
   ],
   linkActiveClass: 'header-link-active',
 });
