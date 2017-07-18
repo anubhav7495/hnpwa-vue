@@ -10,6 +10,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+var inlineMinifier = require('./inline-minifier');
 
 var env = config.build.env
 
@@ -64,10 +65,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency',
-      serviceWorkerLoader: `<script>${fs.readFileSync(path.join(__dirname,
-        './service-worker-prod.js'), 'utf-8')}</script>`,
-      apiDataPreloadLoader: `<script>${fs.readFileSync(path.join(__dirname,
-        './api-data-preload.js'), 'utf-8')}</script>`
+      serviceWorkerLoader: `<script>${inlineMinifier.getMinified('./service-worker-prod.js')}</script>`,
+      apiDataPreloadLoader: `<script>${inlineMinifier.getMinified('./api-data-preload.js')}</script>`
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
