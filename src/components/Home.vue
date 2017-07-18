@@ -17,7 +17,6 @@
 
 <script>
 import PostsList from './PostsList';
-import { getSeedData } from '../utils';
 
 export default {
   name: 'home',
@@ -38,13 +37,14 @@ export default {
     },
   },
   created() {
-    if (this.page === 1) {
-      this.posts = this.getSeedData(this.type);
+    if (window.hnpwaVueApiRes) {
+      this.posts = window.hnpwaVueApiRes;
+      window.hnpwaVueApiRes = null;
+    } else {
+      this.fetchData();
     }
-    this.fetchData();
   },
   methods: {
-    getSeedData,
     fetchData() {
       fetch(`https://node-hnapi.herokuapp.com/${this.type}?page=${this.page}`)
       .then((res) => {
@@ -54,6 +54,7 @@ export default {
       .then((res) => {
         this.posts = res;
         this.hasMore = res.length === 30;
+        window.hnpwaVueApiRes = null;
       })
       .catch(e => console.error(e));
     },
