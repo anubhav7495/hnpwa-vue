@@ -20,6 +20,7 @@ A hacker news reader pwa (Progressive Web App) built using Vue.js and Vue-router
   * route-level code splitting
   * preload / prefetch resources
   * dns-prefetch for api endpoint
+  * api data preloading
 
 
 * Progressive Web App
@@ -55,7 +56,8 @@ $ npm run build --report
 
 ### ToDo
 
-- [ ] Api data caching using service worker
-- [ ] Set up CDN to solve Github Pages caching issue
+- [ ] API data caching using service worker (`networkFirst` strategy)
+- [ ] Conditionally load `fetch` & `promise` polyfills
+- [ ] Implement PRPL
 - [ ] Server Side Rendering (Maybe)
 - [ ] Add Tests
