@@ -53,12 +53,10 @@ export default {
       fetch(`https://node-hnapi.herokuapp.com/item/${this.id}`)
       .then((res) => {
         if (res.ok) return res.json();
-        throw new Error('Network response was not ok');
+        throw new Error('API response error');
       })
-      .then((res) => {
-        this.post = res;
-      })
-      .catch(e => console.error(e));
+      .then((res) => { this.post = res; })
+      .catch(e => console.error(e.message));
     },
   },
 };

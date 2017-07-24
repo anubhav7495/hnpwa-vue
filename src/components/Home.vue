@@ -49,14 +49,14 @@ export default {
       fetch(`https://node-hnapi.herokuapp.com/${this.type}?page=${this.page}`)
       .then((res) => {
         if (res.ok) return res.json();
-        throw new Error('Network response was not ok');
+        throw new Error('API response error');
       })
       .then((res) => {
         this.posts = res;
         this.hasMore = res.length === 30;
         window.hnpwaVueApiRes = null;
       })
-      .catch(e => console.error(e));
+      .catch(e => console.error(e.message));
     },
   },
 };
