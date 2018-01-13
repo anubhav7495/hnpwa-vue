@@ -26,9 +26,6 @@
     <meta name="msapplication-TileImage" content="static/img/icons/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#fff">
 
-    <!-- Inline api data preload request script -->
-    <%= htmlWebpackPlugin.options.apiDataPreloadLoader %>
-
     <% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
